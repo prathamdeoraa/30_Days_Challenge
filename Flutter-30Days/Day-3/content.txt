@@ -1,0 +1,8 @@
+Mini Challenge: 
+  - Console Todo List
+
+  - Add 3 tasks to a list
+
+  - Display all tasks
+
+  - Mark one as completed
