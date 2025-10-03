@@ -1,3 +1,27 @@
+/*
+Mini Challenge: 
+  1- Console Todo List
+  2- Add 3 tasks to a list
+  3- Display all tasks
+  4- Mark one as completed
+*/
+
+/*
+
+Sample Output:
+
+--- Todo List ---
+Enter options to do:
+1. Add Task
+2. Remove Task
+3. Mark Task as Completed
+4. List Tasks
+5. Quit
+Choose an option (1-5): 
+
+*/
+
+
 import 'dart:io';
 
 void addTask(String task, List<String> tasks) {
