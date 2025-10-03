@@ -25,7 +25,7 @@ void main() {
     n--;
   }
 
-  print("\nSum of first $an numbers is: $sum");
+  print("Sum of first $an numbers is: $sum\n");
 
   //3 Do-While Loop
   int number;
