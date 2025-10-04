@@ -1,18 +1,20 @@
-Mini Challenge: 
-  - Console Todo List
+#Mini Challenge:
 
-  - Add 3 tasks to a list
+- Console Todo List
 
-  - Display all tasks
+- Add 3 tasks to a list
 
-  - Mark one as completed
+- Display all tasks
 
-  i want in to do list like 
+- Mark one as completed
+
+## i want in to do list like
 
     -option 1: to Add
     -option 2: to remove
     -option 3: completed
     -option 4: Display all tasks
-    featurs: 
-      -completed ones should comes last or -> we can make different section for completed ones
 
+### featurs:
+
+      -completed ones should comes last or -> we can make different section for completed ones
