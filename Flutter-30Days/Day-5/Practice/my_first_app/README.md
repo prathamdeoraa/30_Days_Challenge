@@ -4,13 +4,31 @@ A new Flutter project.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+- **Step 1: Create a New Flutter Project**
 
-A few resources to get you started if this is your first Flutter project:
+  - flutter create new_flutter_app
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Step 2: Understand Project Structure**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  - lib/ → main code folder, main.dart is the entry point.
+  - pubspec.yaml → manage dependencies, assets, fonts, packages.
+  - android/ → native Android project
+  - ios/ → native iOS project
+  - test/ → for writing test cases
+
+- **Step 3: Examine Default Code**
+
+  - lib/main.dart
+
+- **Step 4: Build a Simple “Hello Flutter” UI**
+
+  - Scaffold → provides structure: AppBar, Body, FloatingActionButton
+  - Center → centers child
+  - Text → displays text
+  - FloatingActionButton → clickable button
+
+- **Step 5: Experiment with Widgets**
+  Column → vertical layout
+  - SizedBox → spacing
+  - Icon → Flutter icon
+  - ElevatedButton → clickable button
