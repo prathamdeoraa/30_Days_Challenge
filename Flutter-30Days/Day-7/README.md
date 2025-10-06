@@ -1,6 +1,6 @@
 ## 🎯 **Goal for the Day**
 
-![alt](/day7/flutter_01.png)
+<img src="day7/flutter_01.png" alt="Profile" width="400" height="750">
 
 By the end of today, you’ll:
 
