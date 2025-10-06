@@ -1,5 +1,7 @@
 ## 🎯 **Goal for the Day**
 
+![alt](/day7/flutter_01.png)
+
 By the end of today, you’ll:
 
 - Understand how to position widgets neatly
