@@ -12,6 +12,6 @@ Future<void> main() async {
   } else {
     print("your answer is processing...");
     await Future.delayed(Duration(seconds: 3));
-    print("Time's up! You answered: $answer");
+    print("To recieve your answer it takes..... 3 seconds");
   }
 }

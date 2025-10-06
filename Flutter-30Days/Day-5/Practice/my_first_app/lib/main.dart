@@ -122,15 +122,92 @@
 // }
 // -----------------------------------------------------------------------------
 
+// import 'package:flutter/material.dart';
+
+// /*
+//       class MyApp extends StatelessWidget {
+//         // it gives error bcoz it missing build:widget
+//       }
+// */
+// void main() {
+//   runApp(MyApp());
+// }
+
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: Text("My first App!!"),
+//           backgroundColor: Colors.redAccent,
+//         ),
+
+//         /* lec 10
+//         body: Center(
+//           child: Text(
+//             "Softwear engineer",
+//             style: TextStyle(color: Colors.deepOrange),
+//           ),
+//         ),
+//         */
+
+//         //lec 11
+//         body: Center(
+//           child: Row(
+//             mainAxisAlignment: MainAxisAlignment.center,
+
+//             children: <Widget>[
+//               Text("software engineer ", style: TextStyle(fontSize: 10)),
+
+//               TextButton(
+//                 onPressed: () => print("Pressed!!"),
+//                 style: TextButton.styleFrom(
+//                   backgroundColor: Colors.redAccent,
+//                   shape: RoundedRectangleBorder(),
+//                   padding: EdgeInsets.all(0),
+//                 ),
+//                 child: Text(
+//                   "Data",
+//                   style: TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                     color: Colors.white,
+//                   ),
+//                 ),
+//               ),
+
+//               Text(" data "),
+
+//               FloatingActionButton(
+//                 onPressed: () => print("Pressed!!"),
+//                 elevation: 10,
+//                 backgroundColor: Colors.red,
+//                 child: Text(
+//                   "Data",
+//                   style: TextStyle(
+//                     fontWeight: FontWeight.bold,
+//                     color: Colors.white,
+//                   ),
+//                 ),
+//               ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
 import 'package:flutter/material.dart';
 
-/*
-      class MyApp extends StatelessWidget {
-        // it gives error bcoz it missing build:widget
-      }
-*/
 void main() {
-  runApp(MyApp());
+  runApp(const MaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -138,64 +215,75 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    // ✅ Wrap Scaffold in DefaultTabController
+    return DefaultTabController(
+      length: 2, // number of tabs
+      child: Scaffold(
         appBar: AppBar(
-          title: Text("My first App!!"),
-          backgroundColor: Colors.redAccent,
-        ),
-
-        /* lec 10
-        body: Center(
-          child: Text(
-            "Softwear engineer",
-            style: TextStyle(color: Colors.deepOrange),
+          leading: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: () {},
           ),
-        ),
-        */
 
-        //lec 11
-        body: Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-
-            children: <Widget>[
-              Text("software engineer ", style: TextStyle(fontSize: 30)),
-
-              TextButton(
-                onPressed: () => print("Pressed!!"),
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  shape: RoundedRectangleBorder(),
-                  padding: EdgeInsets.all(0),
-                ),
-                child: Text(
-                  "Data",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
+          title: const Text('My AppBar Demo'),
+          centerTitle: true,
+          backgroundColor: Colors.indigo,
+          elevation: 4,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            ),
+          ),
+          
+          flexibleSpace: Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.indigo, Colors.blueAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
               ),
-
-              Text(" data "),
-
-              FloatingActionButton(
-                onPressed: () => print("Pressed!!"),
-                elevation: 10,
-                backgroundColor: Colors.red,
-                child: Text(
-                  "Data",
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+            ),
+          ),
+          
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: const Icon(Icons.notifications),
+              onPressed: () {},
+            ),
+            PopupMenuButton<String>(
+              onSelected: (value) => print('Selected: $value'),
+              itemBuilder: (context) => const [
+                PopupMenuItem(value: 'Profile', child: Text('Profile')),
+                PopupMenuItem(value: 'Logout', child: Text('Logout')),
+              ],
+            ),
+          ],
+          bottom: const TabBar(
+            tabs: [
+              Tab(icon: Icon(Icons.home), text: 'Home'),
+              Tab(icon: Icon(Icons.settings), text: 'Settings'),
             ],
           ),
+          toolbarHeight: 80,
+          titleSpacing: 0,
+          toolbarOpacity: 1,
+          bottomOpacity: 1,
+        ),
+
+        // ✅ Add TabBarView here to show tab content
+        body: const TabBarView(
+          children: [
+            Center(child: Text('Home Tab Content')),
+            Center(child: Text('Settings Tab Content')),
+          ],
         ),
       ),
     );
   }
 }
+
+
