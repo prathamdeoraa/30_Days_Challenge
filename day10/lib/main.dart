@@ -1,13 +1,34 @@
 import 'package:flutter/material.dart';
 
-class CheckBoxPage extends StatefulWidget {
-  const CheckBoxPage({super.key});
-
-  @override
-  State<CheckBoxPage> createState() => _CheckBoxPageState();
+void main() {
+  runApp(const MyApp());
 }
 
-class _CheckBoxPageState extends State<CheckBoxPage> {
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      ),
+      debugShowCheckedModeBanner: false,
+      home: const Homepage(),
+    );
+  }
+}
+
+class Homepage extends StatefulWidget {
+  const Homepage({super.key});
+
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   int _selectedIndex = 0; // BottomNavigationBar selected index
 
   // Pages for BottomNavigationBar tabs
@@ -21,7 +42,7 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Day 10 Demo"),
+        title: Text("Day 10 _APP"),
         leading: Builder(
           builder: (context) => IconButton(
             onPressed: Scaffold.of(context).openDrawer,
@@ -35,41 +56,48 @@ class _CheckBoxPageState extends State<CheckBoxPage> {
           ),
         ],
       ),
-    
+
       drawer: Drawer(
-        elevation: ,
-        backgroundColor: Colors.black,
         child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            SizedBox(
-              height: 100,
-              child: DrawerHeader(
-                child: Center(
-                  child: Text(
-                    "Header",
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                border: Border(
+                  bottom: BorderSide(
+                    color: Colors.grey, // color of the bottom border
+                    width: 2, // thickness of the border
                   ),
                 ),
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [Colors.black, Colors.purple],
+              ),
+              child: DrawerHeader(
+                margin: EdgeInsets.zero,
+                padding: EdgeInsets.all(16),
+                child: Text(
+                  "Menu",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
             ),
-            Divider(thickness: 2, color: Colors.white),
-            ListTile(title: Text("First option")),
-            ListTile(title: Text("First option")),
-            ListTile(title: Text("First option")),
-            ListTile(title: Text("First option")),
+            ListTile(
+              leading: Icon(Icons.home),
+              title: Text("Home"),
+              onTap: () => Navigator.pop(context),
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text("Settings"),
+              onTap: () => Navigator.pop(context),
+            ),
           ],
         ),
       ),
-    
+
       body: _pages()[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex,
@@ -126,12 +154,15 @@ class _HomeTabState extends State<HomeTab> {
                   onDismissed: (direction) {
                     setState(() {
                       items.removeAt(index);
-                      print(item);
+                      // print(item);Homepage
                       counter--;
                     });
-                    ScaffoldMessenger.of(
-                      context,
-                    ).showSnackBar(SnackBar(content: Text("$item deleted")));
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text("$item deleted"),
+                        duration: Duration(seconds: 1),
+                      ),
+                    );
                   },
                   child: ListTile(
                     leading: Icon(Icons.check),
@@ -147,9 +178,12 @@ class _HomeTabState extends State<HomeTab> {
             items.add("Item $counter");
             counter++;
           });
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text("Item added!")));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text("Item added!"),
+              duration: Duration(seconds: 1),
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),

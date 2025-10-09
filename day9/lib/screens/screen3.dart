@@ -1,18 +1,45 @@
 import 'package:flutter/material.dart';
 
-class DropDownButtonPage extends StatefulWidget {
-  const DropDownButtonPage({super.key});
+void main() => runApp(MaterialApp(
+      home: DropdownExample(),
+      debugShowCheckedModeBanner: false,
+    ));
 
+class DropdownExample extends StatefulWidget {
   @override
-  State<DropDownButtonPage> createState() => _DropDownButtonPageState();
+  _DropdownExampleState createState() => _DropdownExampleState();
 }
 
-class _DropDownButtonPageState extends State<DropDownButtonPage> {
+class _DropdownExampleState extends State<DropdownExample> {
+  String? selectedCity; // Holds the selected city
+  List<String> cities = ['Mumbai', 'Delhi', 'Pune', 'Bangalore'];
+
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
-      appBar: AppBar(title: const Text("Drop Down Button Example")),
-      body: const Center(child: Text("This is DropDownButton Page")),
+    return Scaffold(
+      appBar: AppBar(title: Text('DropdownButton Example')),
+      
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: DropdownButton<String>(
+            hint: Text('Select City'),
+            value: selectedCity,
+            isExpanded: true, // Makes dropdown take full width
+            onChanged: (String? newValue) {
+              setState(() {
+                selectedCity = newValue;
+              });
+            },
+            items: cities.map((city) {
+              return DropdownMenuItem(
+                value: city,
+                child: Text(city),
+              );
+            }).toList(),
+          ),
+        ),
+      ),
     );
   }
 }
