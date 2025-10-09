@@ -14,7 +14,7 @@ class _TextFormFieldPageState extends State<TextFormFieldPage> {
   final _password = TextEditingController();
   final _phoneno = TextEditingController();
 
-  bool _obscure = true;
+  final bool _obscure = true;
 
   void _login() {
     if (_formKey.currentState!.validate()) {
@@ -79,9 +79,9 @@ class _TextFormFieldPageState extends State<TextFormFieldPage> {
                     border: OutlineInputBorder(),
                   ),
                   validator: (value) {
-                    if (value == null || value.isEmpty)
+                    if (value == null || value.isEmpty) {
                       return "password cannot be empty";
-                    else if (value.length <= 7)
+                    } else if (value.length <= 7)
                       return "password should more than 7char";
                     return null;
                   },

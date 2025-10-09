@@ -6,6 +6,8 @@ void main() => runApp(MaterialApp(
     ));
 
 class DropdownExample extends StatefulWidget {
+  const DropdownExample({super.key});
+
   @override
   _DropdownExampleState createState() => _DropdownExampleState();
 }
