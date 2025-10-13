@@ -43,6 +43,7 @@ class _HomepageState extends State<Homepage> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Day 10 _APP"),
+        backgroundColor: Colors.blueAccent,
         leading: Builder(
           builder: (context) => IconButton(
             onPressed: Scaffold.of(context).openDrawer,
@@ -58,6 +59,7 @@ class _HomepageState extends State<Homepage> {
       ),
 
       drawer: Drawer(
+        surfaceTintColor: Colors.blueAccent,
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
@@ -143,7 +145,7 @@ class _HomeTabState extends State<HomeTab> {
                 final item = items[index];
 
                 return Dismissible(
-                  key: Key(item),
+                  key: UniqueKey(), // ensures each Dismissible is unique
                   direction: DismissDirection.endToStart,
                   background: Container(
                     color: Colors.red,
@@ -152,22 +154,47 @@ class _HomeTabState extends State<HomeTab> {
                     child: Icon(Icons.delete, color: Colors.white),
                   ),
                   onDismissed: (direction) {
+                    // Save deleted item and index
+                    final deletedItem = items[index];
+                    final deletedIndex = index;
+
                     setState(() {
                       items.removeAt(index);
-                      // print(item);Homepage
-                      counter--;
                     });
+
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
-                        content: Text("$item deleted"),
-                        duration: Duration(seconds: 1),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        content: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(child: Text("$deletedItem deleted")),
+                            TextButton(
+                              onPressed: () {
+                                setState(() {
+                                  items.insert(
+                                    deletedIndex,
+                                    deletedItem,
+                                  ); // undo
+                                });
+                              },
+                              child: Text(
+                                "Undo",
+                                style: TextStyle(color: Colors.yellow),
+                              ),
+                            ),
+                          ],
+                        ),
+                        duration: Duration(seconds: 3),
                       ),
                     );
                   },
                   child: ListTile(
                     leading: Icon(Icons.check),
                     subtitle: Text("todo"),
-                    title: Text(item),
+                    title: Text(items[index]),
                   ),
                 );
               },

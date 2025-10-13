@@ -1,10 +1,10 @@
-import 'package:day9/screens/1.%20TextField/screen1.dart';
-import 'package:day9/screens/screen2.dart';
-import 'package:day9/screens/screen3.dart';
-import 'package:day9/screens/screen4.dart';
-import 'package:day9/screens/screen5.dart';
-import 'package:day9/screens/screen6.dart';
-import 'package:day9/screens/screen7.dart';
+import 'package:day9/screens/1textfield.dart';
+import 'package:day9/screens/2textformfield.dart';
+import 'package:day9/screens/3dropdown.dart';
+import 'package:day9/screens/4checkbox.dart';
+import 'package:day9/screens/5Radiobutton.dart';
+import 'package:day9/screens/6buttonvalidation.dart';
+import 'package:day9/screens/MiniChallenge.dart';
 import 'package:flutter/material.dart';
 
 void main() {
