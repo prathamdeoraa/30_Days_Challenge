@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:day15/model/user.dart';
+import 'package:day15/model/main_user.dart';
 import 'package:day15/services/user_api.dart';
 
 class Homepage extends StatefulWidget {
@@ -26,11 +26,9 @@ class _HomepageState extends State<Homepage> {
     fetchUsers();
   }
 
-  void _refresh() {
+  void _refresh() async {
     print("refresh called");
-    setState(() {
-      fetchUsers();
-    });
+    await fetchUsers(); // fetchUsers already calls setState internally
   }
 
   @override
@@ -70,8 +68,9 @@ class _HomepageState extends State<Homepage> {
           final phone = in_user.phone;
           final String name = "${in_user.name.first} ${in_user.name.last}";
           final String fullname = in_user.fullname;
+
           // final email = in_user['email'];
-          // final thumbnail = in_user['picture']['thumbnail'];
+          final thumbnail = in_user.picture.thumbnail;
           // final phone = in_user['phone'];
           // final first = in_user.name.first;
           // final last = in_user.name.last;
@@ -81,12 +80,11 @@ class _HomepageState extends State<Homepage> {
 
           return ListTile(
             leading: ClipRRect(
-              child: Icon(Icons.local_grocery_store_outlined),
               borderRadius: BorderRadius.circular(40),
+              child: Image.network(thumbnail),
             ),
-
             title: Text(fullname),
-            subtitle: Text(phone),
+            subtitle: Text("${in_user.dob.date}"),
             // tileColor: color,
             trailing: Icon(Icons.arrow_forward_ios),
             onTap: () => print("ListItem Selected"),
