@@ -1,3 +1,35 @@
+🧪 Lab: Multi-Screen App with Navigation & Data Passing
+
+Project Title: Student Dashboard App
+
+Objective:
+
+Build a simple 3-screen app using navigation, named routes, and data 
+passing.
+
+Screens:
+
+Login Screen
+
+Input: username
+
+Button: “Login”
+
+Pass username → Dashboard
+
+Dashboard Screen
+
+Display: “Welcome, [username]”
+
+Button: “Go to Profile”
+
+Navigation Drawer → Profile, Settings
+
+Profile Screen
+
+Show username + simple details
+
+Back button → Dashboard
 
 # Day 14: Review & Mini Project
 

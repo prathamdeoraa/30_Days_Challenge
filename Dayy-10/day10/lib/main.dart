@@ -126,6 +126,8 @@ class _HomepageState extends State<Homepage> {
 
 // HomeTab as StatefulWidget
 class HomeTab extends StatefulWidget {
+  const HomeTab({super.key});
+
   @override
   State<HomeTab> createState() => _HomeTabState();
 }
