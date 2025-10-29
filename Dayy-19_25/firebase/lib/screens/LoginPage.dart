@@ -14,21 +14,32 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _emailcontroller = TextEditingController();
   final TextEditingController _passcontroller = TextEditingController();
 
-  getLogin(String email, String pass) async {
+  Future<void> getLogin(String email, String pass) async {
     if (email == "" && pass == "") {
       return UiHelper.AlerBox(context, "Enter Valid Fields");
     } else {
       try {
         UserCredential? usercred;
-        usercred = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: pass)
-            .then((value) {
-               Navigator.pushNamedAndRemoveUntil(
-                context,
-                '/dashboard',
-                (route) => false,
-              );
-            });
+        // FirebaseAuth.instance.setLanguageCode('en');
+        // final start = DateTime.now();
+        // await FirebaseAuth.instance.signInWithEmailAndPassword(
+        //   email: email,
+        //   password: pass,
+        // );
+        // print(
+        //   'Login took: ${DateTime.now().difference(start).inSeconds} seconds',
+        // );
+
+        usercred = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: pass,
+        );
+
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          '/dashboard',
+          (route) => false,
+        );
       } on FirebaseAuthException catch (ex) {
         UiHelper.AlerBox(context, ex.code.toString());
       }
@@ -73,8 +84,8 @@ class _LoginPageState extends State<LoginPage> {
             UiHelper.CustomButton(
               () {
                 getLogin(
-                  _emailcontroller.text.toString(),
-                  _passcontroller.text.toString(),
+                  _emailcontroller.text.trim(),
+                  _passcontroller.text.trim(),
                 );
               },
               "Login",

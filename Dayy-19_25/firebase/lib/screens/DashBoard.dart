@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -18,7 +19,8 @@ class _DashboardState extends State<Dashboard> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
+        onPressed: () async {
+          await FirebaseAuth.instance.signOut();
           Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
         },
         child: Icon(Icons.logout),

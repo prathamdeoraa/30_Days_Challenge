@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class UiHelper {
-  static CustomField(
+  static Padding CustomField(
     TextEditingController controller,
     Icon icons,
     String text,
@@ -24,7 +24,11 @@ class UiHelper {
     );
   }
 
-  static CustomButton(VoidCallback voidcallback, String text, double width) {
+  static ElevatedButton CustomButton(
+    VoidCallback voidcallback,
+    String text,
+    double width,
+  ) {
     return ElevatedButton(
       onPressed: () {
         voidcallback();
@@ -43,7 +47,7 @@ class UiHelper {
     );
   }
 
-  static AlerBox(BuildContext context, String text) {
+  static Future AlerBox(BuildContext context, String text) {
     return showDialog(
       context: context,
       builder: (BuildContext context) {
