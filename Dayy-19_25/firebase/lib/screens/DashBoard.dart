@@ -1,3 +1,4 @@
+import 'package:firebase/services/ShowData.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +18,8 @@ class _DashboardState extends State<Dashboard> {
         backgroundColor: Colors.amber,
         title: Text("dashboardx"),
       ),
+
+      body: ShowData(),
 
       floatingActionButton: FloatingActionButton(
         onPressed: () async {

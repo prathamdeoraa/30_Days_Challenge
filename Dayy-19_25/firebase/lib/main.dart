@@ -1,10 +1,5 @@
-import 'package:firebase/screens/DashBoard.dart';
-import 'package:firebase/screens/LoginPage.dart';
-import 'package:firebase/screens/SignUpPage.dart';
-import 'package:firebase/services/CheckUser.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'view/imp_exp.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,12 +17,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Firebase',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/checkuser',
+      initialRoute: '/splashscreen',
       routes: {
         '/': (context) => const LoginPage(),
         '/signup': (context) => const SignUpPage(),
         '/dashboard': (context) => const Dashboard(),
         '/checkuser': (context) => const CheckUser(),
+        '/resetpass': (context) => const ResetPassword(),
+        '/phone': (context) => const Phonepage(),
+        '/database1': (context) => const ShowData(),
+        '/splashscreen': (context) => const SplashScreen(),
       },
     );
   }

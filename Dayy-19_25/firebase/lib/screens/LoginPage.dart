@@ -1,3 +1,4 @@
+
 import 'package:firebase/Uihelper/UiHelper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -15,10 +16,14 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _passcontroller = TextEditingController();
 
   Future<void> getLogin(String email, String pass) async {
+    await Future.delayed(const Duration(seconds: 5));
+
     if (email == "" && pass == "") {
       return UiHelper.AlerBox(context, "Enter Valid Fields");
     } else {
       try {
+        UiHelper.AlerBox(context, 'Sometimes it takes time..');
+
         UserCredential? usercred;
         // FirebaseAuth.instance.setLanguageCode('en');
         // final start = DateTime.now();
@@ -66,6 +71,44 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             SizedBox(height: 100),
 
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      //Todo
+                      Navigator.pushNamed(context, '/phone');
+                    },
+                    icon: Icon(Icons.phone, color: Colors.white),
+                  ),
+                ),
+
+                Container(
+                  margin: EdgeInsets.only(left: 30),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    // borderRadius: BorderRadius.circular(30),
+                    shape: BoxShape.circle,
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      //Todo
+                    },
+                    icon: Icon(Icons.facebook, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+
+            SizedBox(height: 10),
+            Text('OR', style: TextStyle(fontWeight: FontWeight.bold)),
+
             UiHelper.CustomField(
               _emailcontroller,
               Icon(Icons.mail),
@@ -107,8 +150,26 @@ class _LoginPageState extends State<LoginPage> {
                     Navigator.pushNamed(context, '/signup');
                   },
                   child: Text(
-                    "SIGNUP",
-                    style: TextStyle(fontSize: 15, color: Colors.blueAccent),
+                    "Signup",
+                    style: TextStyle(fontSize: 15, color: Colors.blue[900]),
+                  ),
+                ),
+              ],
+            ),
+            Text('OR', style: TextStyle(fontWeight: FontWeight.bold)),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+
+              children: [
+                Text("Forgot your password?", style: TextStyle(fontSize: 15)),
+                TextButton(
+                  onPressed: () {
+                    //Todo
+                    Navigator.pushNamed(context, '/resetpass');
+                  },
+                  child: Text(
+                    "Reset",
+                    style: TextStyle(fontSize: 15, color: Colors.blue[900]),
                   ),
                 ),
               ],

@@ -16,8 +16,7 @@ class _CheckUserState extends State<CheckUser> {
       const Duration(milliseconds: 500),
     ); // optional splash delay
 
-    if (!mounted) return;
-
+    
     if (user != null) {
       await FirebaseAuth.instance.signOut();
       Navigator.pushNamedAndRemoveUntil(
